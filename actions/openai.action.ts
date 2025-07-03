@@ -3,7 +3,7 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai"; // load enviro
 import "dotenv/config";
 
 //import { ChatOpenAI } from '@langchain/openai';
-import { ChatMessageHistory } from "langchain/memory";
+import { InMemoryChatMessageHistory } from "@langchain/core/chat_history";
 import { RunnableWithMessageHistory } from "@langchain/core/runnables";
 import {
   ChatPromptTemplate,
@@ -19,7 +19,7 @@ const llm = new ChatGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_GEMINI_KEY,
 });
 
-const history = new ChatMessageHistory();
+const history = new InMemoryChatMessageHistory();
 
 const prompt = ChatPromptTemplate.fromMessages([
   [
